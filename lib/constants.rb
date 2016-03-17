@@ -1,0 +1,11 @@
+  MASK = 7
+  BITS = 0
+  COLOR_MASK = BITS | (MASK << 9)
+  SHAPE_MASK = BITS | (MASK << 6)
+  SHADE_MASK = BITS | (MASK << 3)
+  NUMBER_MASK = BITS | MASK
+
+
+  
+
+

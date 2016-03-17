@@ -9,3 +9,5 @@ class Deck
   end
 end
 
+hand = Deck.new
+

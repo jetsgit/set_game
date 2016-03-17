@@ -1,46 +1,28 @@
+require_relative 'constants'
 require 'pry'
+
 class Card
-  attr_accessor :color, :shape, :shade, :number, :flags
+  attr_accessor :color, :shape, :pattern, :number, :flags, :property
 
-  
-  COLOR = [ :red, :green,  :purple]
-  SHAPE = [ :diamond, :squiggle, :oval]
-  SHADE = [:solid, :empty, :striped]
-  NUMBER = [:one, :two, :three]
-  @n = -1
-  @qualities = [COLOR, SHAPE, SHADE, NUMBER]
-
-  MASK = 7
-  BITS = 0
-  COLOR_MASK = BITS | (MASK << 9)
-  SHAPE_MASK = BITS | (MASK << 6)
-  SHADE_MASK = BITS | (MASK << 3)
-  NUMBER_MASK = BITS | MASK
+  COLOR = [ {red: 1}, {green: 2 }, {purple: 4}]
+  SHAPE = [ {diamond: 8}, {squiggle: 16}, {oval: 32}]
+  PATTERN = [{solid: 64}, {empty: 128}, {stripe: 256}]
+  NUMBER = [{one: 512 }, {two: 1024}, {three: 2048}]
 
   def initialize( card )
+    @n = -1
+    @property = []
     self.color = COLOR[card % 3]
     self.shape = SHAPE[card % 3]
-    self.shade = SHADE[card % 3]
+    self.pattern = PATTERN[card % 3]
     self.number = NUMBER[card % 3]
+    binding.pry
     @flags = BITS | (color.first[1])
     @flags = @flags | (shape.first[1])
     @flags = @flags | (shade.first[1] )
     @flags = @flags | (number.first[1])
   end
 
-
-  def self.build_qualities
-    @qualities.each do |ary|
-      assign_attr ary
-    end
-  end
-
-  def self.assign_attr(atr )
-    atr.map! do |a|
-      @n += 1
-      Hash[ a => 2 ** @n ]
-    end
-  end
 end
 
-Card.build_qualities
+# Card.build_qualities
