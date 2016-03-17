@@ -25,9 +25,6 @@ class PlayCards
     hand
   end
 
-  def is_set?(a, b, c)
-    if a.color == b.color && b.color == c.color
-      if a.
+  def is_set? 
   end
-
 end
