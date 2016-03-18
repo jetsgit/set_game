@@ -1,5 +1,8 @@
 require_relative "card"
 
+##
+# Deck class initiates each of 81 cards and shuffles deck
+
 class Deck
   attr_accessor :deck
   def initialize

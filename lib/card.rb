@@ -1,9 +1,10 @@
 require_relative 'constants'
-require 'pry'
+
+##
+# Card class initializes a card with properties and bit flags for properties
 
 class Card
   attr_accessor  :property,  :flags #  :color, :shape, :pattern, :number, :flags,
-
 
   def initialize(color, shape, pattern, number)
     @property = {}
