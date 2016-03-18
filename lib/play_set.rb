@@ -70,7 +70,6 @@ class PlaySet
 
   def build_sets
     @max_sets = @board.combination(3).to_a
-    # puts "Size of max_sets is: #{@max_sets.size}"
   end
 
   def attr_equal?(arr)
