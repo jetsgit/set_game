@@ -13,27 +13,27 @@ Properties
 
 **Color**
 
- -Red
- -Green
- -Purple
+ * Red
+ * Green
+ * Purple
 
 **Shape**
 
--Diamond
--Squiggle
--Oval
+* Diamond
+* Squiggle
+* Oval
 
 **Pattern**
 
--Solid
--Empty
--Striped
+* Solid
+* Empty
+* Striped
 
 **Number**
 
--One
--Two
--Three
+* One
+* Two
+* Three
 
 
 Copyright
