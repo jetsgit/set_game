@@ -34,3 +34,9 @@ Properties
 -One
 -Two
 -Three
+
+
+Copyright
+---------
+
+[Copyright]( http://jet.mit-license.org/ ) by Jerrold R Thompson
