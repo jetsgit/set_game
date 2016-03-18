@@ -11,13 +11,9 @@ class Card
     @property[:shape] = shape
     @property[:pattern] = pattern
     @property[:number] = number
-    # binding.pry
     @flags = BITS | (property[:color].first[1])
     @flags = @flags | (property[:shape].first[1])
     @flags = @flags | (property[:pattern].first[1] )
     @flags = @flags | (property[:number].first[1])
   end
-
 end
-
-# Card.build_qualities

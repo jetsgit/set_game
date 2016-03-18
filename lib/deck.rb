@@ -1,19 +1,18 @@
 require_relative "card"
 
 class Deck
-  attr_accessor :cards
+  attr_accessor :deck
   def initialize
-    @cards = []
+    @deck= []
     COLOR.each do |color|
       SHAPE.each do |shape|
         PATTERN.each do |pattern|
           NUMBER.each do |number|
-            @cards << Card.new(color, shape, pattern, number)
+            @deck << Card.new(color, shape, pattern, number)
           end
         end
       end
     end
+    @deck.shuffle!  random: Random.rand
   end
 end
-
-
