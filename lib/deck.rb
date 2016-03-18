@@ -3,11 +3,17 @@ require_relative "card"
 class Deck
   attr_accessor :cards
   def initialize
-    self.cards = (0..80).to_a.map! do |card|
-      Card.new(card)
+    @cards = []
+    COLOR.each do |color|
+      SHAPE.each do |shape|
+        PATTERN.each do |pattern|
+          NUMBER.each do |number|
+            @cards << Card.new(color, shape, pattern, number)
+          end
+        end
+      end
     end
   end
 end
 
-hand = Deck.new
 
