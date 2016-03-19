@@ -1,9 +1,6 @@
 The Game of Set
 ==============
 
-
-**This is the classic game of Set, invented by Marsha Falco in 1974.**
-
 It was inspired by her work in genetics, which she decided could be more fun.
 There are 81 cards in the deck. The idea is to create a set
 which consists of 3 cards, where their properties are either
