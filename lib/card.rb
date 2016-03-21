@@ -5,7 +5,7 @@ require_relative 'constants'
 
 class Card
   include Constants
-  attr_accessor  :property,  :flags #  :color, :shape, :pattern, :number, :flags,
+  attr_accessor  :property,  :flags 
 
   def initialize(args)
     @property = {}
