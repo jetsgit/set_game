@@ -6,14 +6,14 @@ require_relative "constants"
 
 class PlaySet
 
-  attr_accessor :hand, :matched_sets
+  # attr_accessor :hand, :matched_sets
   INITIAL_CARDS = (0...12)
   CARDS = (0...3)
 
   def initialize
     @hand = Deck.new
     @matched_sets = []
-    hand.deck.shuffle! random: Random.rand
+    @hand.deck.shuffle! random: Random.rand
     @board = []
   end
 
@@ -22,12 +22,12 @@ class PlaySet
 
   def play
     deal( INITIAL_CARDS )
-    while hand.deck.size >= 3
+    while @hand.deck.size >= 3
       compare_cards
       deal( CARDS )
     end
     set_num = 1
-    matched_sets.each do |set|
+    @matched_sets.each do |set|
       card_num = 1
       puts "Here is Set #{set_num}"
       set.each do |card|
@@ -40,7 +40,7 @@ class PlaySet
   end
 
   def deal cards
-    @board.concat( hand.deck.slice! cards )
+    @board.concat( @hand.deck.slice! cards )
   end
 
   private
@@ -50,9 +50,9 @@ class PlaySet
     @max_sets ||= build_sets
     @max_sets.each do |cards|
       if find_set(cards)
-        matched_sets <<  cards
+        @matched_sets <<  cards
         remove_cards_from_board(cards)
-        if hand.deck.size > CARDS.size
+        if @hand.deck.size > CARDS.size
           deal( CARDS )
           build_sets
           compare_cards
