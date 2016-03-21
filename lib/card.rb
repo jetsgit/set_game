@@ -4,14 +4,15 @@ require_relative 'constants'
 # Card class initializes a card with properties and bit flags for properties
 
 class Card
+  include Constants
   attr_accessor  :property,  :flags #  :color, :shape, :pattern, :number, :flags,
 
-  def initialize(color, shape, pattern, number)
+  def initialize(args)
     @property = {}
-    @property[:color] = color
-    @property[:shape] = shape
-    @property[:pattern] = pattern
-    @property[:number] = number
+    @property[:color] = args[:color]
+    @property[:shape] = args[:shape]
+    @property[:pattern] = args[:pattern]
+    @property[:number] = args[:number]
     @flags = BITS | (property[:color].first[1])
     @flags = @flags | (property[:shape].first[1])
     @flags = @flags | (property[:pattern].first[1] )

@@ -6,6 +6,7 @@ require_relative "constants"
 
 class PlaySet
 
+  include Constants
   # attr_accessor :hand, :matched_sets
   INITIAL_CARDS = (0...12)
   CARDS = (0...3)
@@ -111,3 +112,6 @@ class PlaySet
     end
   end
 end
+
+game = PlaySet.new
+game.play
