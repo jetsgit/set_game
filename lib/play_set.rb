@@ -39,11 +39,12 @@ class PlaySet
     end
   end
 
-  private
-
   def deal cards
     @board.concat( hand.deck.slice! cards )
   end
+
+  private
+
 
   def compare_cards
     @max_sets ||= build_sets
