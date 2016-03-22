@@ -1,9 +1,9 @@
 require_relative "deck"
 require_relative "constants"
+require_relative "finder"
 
 ##
 # This is class for the classic game of Set.
-
 class PlaySet
 
   include Constants
@@ -16,6 +16,7 @@ class PlaySet
     @matched_sets = []
     @max_sets = nil
     @board = []
+    @finder = Finder.new
   end
 
   ##
@@ -56,7 +57,7 @@ class PlaySet
   def compare_cards
     @max_sets ||= build_sets
     @max_sets.each do |cards|
-      if find_set(cards)
+      if @finder.find_set(cards)
         @matched_sets <<  cards
         remove_cards_from_board(cards)
         if hand.deck.size > CARDS.size
@@ -77,46 +78,6 @@ class PlaySet
     @max_sets = @board.combination(3).to_a
   end
 
-  def attr_equal?(arr)
-    if ( (arr[0] == arr[1])  && (arr[0] == arr[2] ) )
-      true
-    else
-      false
-    end
-  end
-
-  def attr_uniq?(arr, mask)
-    if ( arr[0] | arr[1] |  arr[2]) == mask
-      true
-    else
-      false
-    end
-  end
-
- ##
- #Method finds set of of cards
-  def find_set(cards)
-    if (unique_set( :color, COLOR_MASK, cards ) && unique_set(:shape, SHAPE_MASK, cards) && unique_set(:pattern, PATTERN_MASK, cards) && unique_set(:number, NUMBER_MASK, cards))
-      true
-    else
-      false
-    end
-  end
-
-  ##
-  #Method determines if 3 cards make up a set
-
-  def unique_set(key, mask, cards)
-    card_properties = []
-    cards.each do |card|
-       card_properties << card_property(key, mask, card)
-    end
-    if attr_equal?(card_properties) ||  attr_uniq?(card_properties, mask)
-      true
-    else
-      false
-    end
-  end
 
   def card_property(key, mask, card)
     card.property[key].first[1] & mask
