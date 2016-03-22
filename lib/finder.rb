@@ -40,17 +40,17 @@ class Finder
     end
   end
 
-  private
-
-  def card_property(key, mask, card)
-    card.property[key].first[1] & mask
-  end
-
   def find_set(cards)
     if (unique_set( :color, COLOR_MASK, cards ) && unique_set(:shape, SHAPE_MASK, cards) && unique_set(:pattern, PATTERN_MASK, cards) && unique_set(:number, NUMBER_MASK, cards))
       true
     else
       false
     end
+  end
+
+  private
+
+  def card_property(key, mask, card)
+    card.property[key].first[1] & mask
   end
 end
