@@ -40,6 +40,8 @@ class Finder
     end
   end
 
+  private
+
   def card_property(key, mask, card)
     card.property[key].first[1] & mask
   end
