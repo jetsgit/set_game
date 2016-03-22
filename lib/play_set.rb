@@ -7,14 +7,15 @@ require_relative "constants"
 class PlaySet
 
   include Constants
-  # attr_accessor :hand, :matched_sets
+  attr_accessor :hand, :matched_sets, :max_sets, :board
   INITIAL_CARDS = (0...12)
   CARDS = (0...3)
 
   def initialize
     @hand = Deck.new
     @matched_sets = []
-    @hand.deck.shuffle! random: Random.rand
+    @max_sets = nil
+    hand.deck.shuffle! random: Random.rand
     @board = []
   end
 
@@ -23,7 +24,7 @@ class PlaySet
 
   def play
     deal( INITIAL_CARDS )
-    while @hand.deck.size >= 3
+    while hand.deck.size >= 3
       compare_cards
       deal( CARDS )
     end
@@ -32,14 +33,14 @@ class PlaySet
   end
 
   def deal cards
-    @board.concat( @hand.deck.slice! cards )
+    self.board.concat( hand.deck.slice! cards )
   end
 
   private
 
 
   def print_sets(num)
-    @matched_sets.each do |set|
+    matched_sets.each do |set|
       # output_sets(num, set)
       card_num = 1
       puts "Here is Set #{num}"
@@ -53,12 +54,12 @@ class PlaySet
   end
 
   def compare_cards
-    @max_sets ||= build_sets
-    @max_sets.each do |cards|
+    self.max_sets ||= build_sets
+    max_sets.each do |cards|
       if find_set(cards)
-        @matched_sets <<  cards
+        matched_sets <<  cards
         remove_cards_from_board(cards)
-        if @hand.deck.size > CARDS.size
+        if hand.deck.size > CARDS.size
           deal( CARDS )
           build_sets
           compare_cards
@@ -69,11 +70,11 @@ class PlaySet
   end
 
   def remove_cards_from_board(cards)
-    @board -= cards
+    self.board -= cards
   end
 
   def build_sets
-    @max_sets = @board.combination(3).to_a
+    self.max_sets = self.board.combination(3).to_a
   end
 
   def attr_equal?(arr)
