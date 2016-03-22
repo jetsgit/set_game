@@ -7,7 +7,7 @@ require_relative "constants"
 class PlaySet
 
   include Constants
-  attr_accessor :hand, :matched_sets, :max_sets, :board
+  attr_accessor :hand
   INITIAL_CARDS = (0...12)
   CARDS = (0...3)
 
@@ -33,14 +33,14 @@ class PlaySet
   end
 
   def deal cards
-    self.board.concat( hand.deck.slice! cards )
+    @board.concat( hand.deck.slice! cards )
   end
 
   private
 
 
   def print_sets(num)
-    matched_sets.each do |set|
+    @matched_sets.each do |set|
       # output_sets(num, set)
       card_num = 1
       puts "Here is Set #{num}"
@@ -54,10 +54,10 @@ class PlaySet
   end
 
   def compare_cards
-    self.max_sets ||= build_sets
-    max_sets.each do |cards|
+    @max_sets ||= build_sets
+    @max_sets.each do |cards|
       if find_set(cards)
-        matched_sets <<  cards
+        @matched_sets <<  cards
         remove_cards_from_board(cards)
         if hand.deck.size > CARDS.size
           deal( CARDS )
@@ -70,11 +70,11 @@ class PlaySet
   end
 
   def remove_cards_from_board(cards)
-    self.board -= cards
+    @board -= cards
   end
 
   def build_sets
-    self.max_sets = self.board.combination(3).to_a
+    @max_sets = @board.combination(3).to_a
   end
 
   def attr_equal?(arr)
@@ -109,7 +109,7 @@ class PlaySet
   def unique_set(key, mask, cards)
     card_properties = []
     cards.each do |card|
-       card_properties << card_property(key, mask, card) 
+       card_properties << card_property(key, mask, card)
     end
     if attr_equal?(card_properties) ||  attr_uniq?(card_properties, mask)
       true
@@ -119,7 +119,7 @@ class PlaySet
   end
 
   def card_property(key, mask, card)
-    card.property[key].first[1] & mask 
+    card.property[key].first[1] & mask
   end
 end
 
