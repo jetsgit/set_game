@@ -28,16 +28,17 @@ class PlaySet
       deal( CARDS )
     end
     set_num = 1
-    @matched_sets.each do |set|
-      card_num = 1
-      puts "Here is Set #{set_num}"
-      set.each do |card|
-        puts "\t\tCard #{card_num} is: #{card.property[:color].first[0]}, #{card.property[:shape].first[0]}, #{card.property[:pattern].first[0]}, #{card.property[:number].first[0]}"
-        card_num += 1
-      end
-      puts "\n"
-      set_num += 1
-    end
+    print_sets set_num
+    # @matched_sets.each do |set|
+    #   card_num = 1
+    #   puts "Here is Set #{set_num}"
+    #   set.each do |card|
+    #     puts "\t\tCard #{card_num} is: #{card.property[:color].first[0]}, #{card.property[:shape].first[0]}, #{card.property[:pattern].first[0]}, #{card.property[:number].first[0]}"
+    #     card_num += 1
+    #   end
+    #   puts "\n"
+    #   set_num += 1
+    # end
   end
 
   def deal cards
@@ -46,6 +47,20 @@ class PlaySet
 
   private
 
+
+  def print_sets(num)
+    @matched_sets.each do |set|
+      # output_sets(num, set)
+      card_num = 1
+      puts "Here is Set #{num}"
+      set.each do |card|
+        puts "\t\tCard #{card_num} is: #{card.property[:color].first[0]}, #{card.property[:shape].first[0]}, #{card.property[:pattern].first[0]}, #{card.property[:number].first[0]}"
+        card_num += 1
+      end
+      puts "\n"
+      num += 1
+    end
+  end
 
   def compare_cards
     @max_sets ||= build_sets
