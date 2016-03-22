@@ -5,13 +5,6 @@ class Finder
  #Method finds set of of cards by comparing flags for each attribute
  #to see if they are all the same or all unique
   include Constants
-  def find_set(cards)
-    if (unique_set( :color, COLOR_MASK, cards ) && unique_set(:shape, SHAPE_MASK, cards) && unique_set(:pattern, PATTERN_MASK, cards) && unique_set(:number, NUMBER_MASK, cards))
-      true
-    else
-      false
-    end
-  end
 
   ##
   #Method determines if 3 cards make up a set
@@ -49,5 +42,13 @@ class Finder
 
   def card_property(key, mask, card)
     card.property[key].first[1] & mask
+  end
+
+  def find_set(cards)
+    if (unique_set( :color, COLOR_MASK, cards ) && unique_set(:shape, SHAPE_MASK, cards) && unique_set(:pattern, PATTERN_MASK, cards) && unique_set(:number, NUMBER_MASK, cards))
+      true
+    else
+      false
+    end
   end
 end
