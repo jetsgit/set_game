@@ -10,6 +10,7 @@ class PlaySet
   attr_accessor :hand
   INITIAL_CARDS = (0...12)
   CARDS = (0...3)
+  CARD_SET = 3
 
   def initialize
     @hand = Deck.new
@@ -21,11 +22,10 @@ class PlaySet
 
   ##
   # Public method that initiates the game
-
   def play
     hand.deck.shuffle! random: Random.rand
     deal( INITIAL_CARDS )
-    while hand.deck.size >= 3
+    while hand.deck.size >= CARD_SET
       compare_cards
       deal( CARDS )
     end
@@ -40,6 +40,8 @@ class PlaySet
   private
 
 
+  ##
+  #Simple stdout print
   def print_sets(num)
     @matched_sets.each do |set|
       # output_sets(num, set)
@@ -54,6 +56,8 @@ class PlaySet
     end
   end
 
+  ##
+  #Iterate method to find sets, keep @board state consistent, build_sets
   def compare_cards
     @max_sets ||= build_sets
     @max_sets.each do |cards|
@@ -70,17 +74,16 @@ class PlaySet
     end
   end
 
+  ##
+  #Method to keep @board cards accurate
   def remove_cards_from_board(cards)
     @board -= cards
   end
 
+  ##
+  #Create maximum number of cards sets given the size of @board.size and CARD_SET cards
   def build_sets
-    @max_sets = @board.combination(3).to_a
-  end
-
-
-  def card_property(key, mask, card)
-    card.property[key].first[1] & mask
+    @max_sets = @board.combination(CARD_SET).to_a
   end
 end
 
