@@ -103,13 +103,17 @@ class PlaySet
   def unique_set(key, mask, cards)
     card_properties = []
     cards.each do |card|
-      ( card_properties << ( card.property[key].first[1] & mask ) )
+       card_properties << card_property(key, mask, card) 
     end
     if attr_equal?(card_properties) ||  attr_uniq?(card_properties, mask)
       true
     else
       false
     end
+  end
+
+  def card_property(key, mask, card)
+    card.property[key].first[1] & mask 
   end
 end
 
