@@ -1,12 +1,7 @@
 require_relative "constants"
 
 class Finder
-  # attr_accessor :cards
-  # def initialize(args)
-  #   @cards = args
-  # end
 
- ##
  #Method finds set of of cards by comparing flags for each attribute
  #to see if they are all the same or all unique
   include Constants
@@ -50,5 +45,9 @@ class Finder
     else
       false
     end
+  end
+
+  def card_property(key, mask, card)
+    card.property[key].first[1] & mask
   end
 end
