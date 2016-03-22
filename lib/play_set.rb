@@ -15,7 +15,6 @@ class PlaySet
     @hand = Deck.new
     @matched_sets = []
     @max_sets = nil
-    hand.deck.shuffle! random: Random.rand
     @board = []
   end
 
@@ -23,6 +22,7 @@ class PlaySet
   # Public method that initiates the game
 
   def play
+    hand.deck.shuffle! random: Random.rand
     deal( INITIAL_CARDS )
     while hand.deck.size >= 3
       compare_cards
