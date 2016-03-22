@@ -29,16 +29,6 @@ class PlaySet
     end
     set_num = 1
     print_sets set_num
-    # @matched_sets.each do |set|
-    #   card_num = 1
-    #   puts "Here is Set #{set_num}"
-    #   set.each do |card|
-    #     puts "\t\tCard #{card_num} is: #{card.property[:color].first[0]}, #{card.property[:shape].first[0]}, #{card.property[:pattern].first[0]}, #{card.property[:number].first[0]}"
-    #     card_num += 1
-    #   end
-    #   puts "\n"
-    #   set_num += 1
-    # end
   end
 
   def deal cards
