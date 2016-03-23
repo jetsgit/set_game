@@ -18,6 +18,5 @@ class Deck
         end
       end
     end
-    @deck.shuffle!  random: Random.rand
   end
 end
