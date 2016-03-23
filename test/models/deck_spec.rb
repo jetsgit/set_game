@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Deck do
-  let(:hand) {Deck.new}
+describe SetGame::Deck do
+  let(:hand) {SetGame::Deck.new}
   describe 'Deck#new' do
 
     it 'should create a deck with 81 cards' do

@@ -3,7 +3,6 @@ module SetGame
 
   ##
   # Card class initializes a card with properties and bit flags for properties
-
   class Card
     include Constants
     attr_accessor  :property,  :flags 

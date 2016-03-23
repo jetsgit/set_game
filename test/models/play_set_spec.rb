@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe PlaySet do
-  let(:game) {PlaySet.new}
+describe SetGame::PlaySet do
+  let(:game) {SetGame::PlaySet.new}
   describe "PlaySet#deal" do
     it "should deal cards from the deck by removing them from deck" do
       deck_size = game.hand.deck.size

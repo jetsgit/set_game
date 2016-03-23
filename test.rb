@@ -1,4 +1,4 @@
-require_relative 'play_set'
+require_relative 'lib/play_set'
 
 game = SetGame::PlaySet.new
 game.shuffle

@@ -1,13 +1,8 @@
-require File.expand_path('../../lib/card', __FILE__)
-require File.expand_path('../../lib/deck', __FILE__)
-require File.expand_path('../../lib/play_set', __FILE__)
-require File.expand_path('../../lib/finder', __FILE__)
-
+Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file|    require File.basename(file, File.extname(file)) }
 
 require "minitest/autorun"
 require "minitest/spec"
 require "minitest/reporters"
-
 
 module Minitest
   module Reporters

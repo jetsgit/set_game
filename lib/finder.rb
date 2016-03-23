@@ -5,7 +5,7 @@ module SetGame
 
     #Method finds set of of cards by comparing flags for each attribute
     #to see if they are all the same or all unique
-    include Constants
+    include SetGame::Constants
 
     ##
     #Method determines if 3 cards make up a set
